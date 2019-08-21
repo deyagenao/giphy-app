@@ -26,10 +26,13 @@
             <div class="col-md-4 border-right">
                 <h4>Your Buttons</h4>
                 <div id="buttons-display"></div>
-                <h5>Want to add another?</h5>
-                <input class="form-control" type="text">
-                <button type="submit" class="btn btn-info mt-2">Submit</button>
-
+                <form class="mt-2">
+                    <div class="form-group">
+                        <label for="new-button-text"><h5>Want to add another?</h5></label>
+                        <input id="new-button-text" class="form-control" type="text">
+                    </div>
+                    <button id="add-new-button" type="submit" class="btn btn-info mt-2">Submit</button>
+                </form>
             </div>
             <!-- Section to display the Gifs -->
             <div class="col-md-8">
