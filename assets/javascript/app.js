@@ -73,9 +73,11 @@ $(document.body).on("click", ".gif-button", function(event) {
             // give each image a data attribute set to still 
             gifImage.attr("data-state", "still");
             // give each image a data-still attribute with the link to the still image of the gif 
-            gifImage.attr("data-animate", response.data[i].images.fixed_height_still.url);
+            gifImage.attr("data-still", response.data[i].images.fixed_height_still.url);
             // give each image a data-animate attribute with the link to the animated version of the gif 
             gifImage.attr("data-animate", response.data[i].images.fixed_height.url);
+            // add a class to the image so that the image can be clicked 
+            gifImage.addClass("gif-image");
             // append the gifImage to the gifDiv
             gifDiv.append(gifImage);
             // append each gifDiv to the div already existing on the page to display the gif 
@@ -85,5 +87,20 @@ $(document.body).on("click", ".gif-button", function(event) {
 });
 
 // Attaching event handlers to each GIF
-// When still version of the GIF is clicked, becomes animated
-// When animated version of the GIF is clicked, becomes still
+$(document.body).on("click", ".gif-image", function(){
+    // check the state of the gif to see if the gif is still or animated 
+    var state = $(this).attr("data-state");
+    // if the data-state is still, then change the image to the animated version and the data state to animated
+    if (state === "still") {
+        // change the source of the image to the animated version 
+        $(this).attr("src", $(this).attr("data-animate"));
+        // change the data state to animate 
+        $(this).attr("data-state", "animate");
+    } else {
+        // change the source of the image to the still version
+        $(this).attr("src", $(this).attr("data-still"));
+        // change the data state to still
+        $(this).attr("data-state", "still");
+    }
+})
+
