@@ -58,6 +58,7 @@ $(document.body).on("click", ".gif-button", function(event) {
         // assigning the gif results to a variable 
         var results = response.data;
         // Clear any GIFs already being displayed
+        $("#gifs-display").empty();
         // running a for loop to receive information for each gif object received 
         for (var i=0; i < response.data.length; i ++) {
             // create a new div to hold each gif and its rating 
